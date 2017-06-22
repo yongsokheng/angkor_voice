@@ -2,10 +2,28 @@ import React, { Component } from "react";
 import { View, Text, FlatList, Image } from 'react-native';
 
 class Article extends Component {
+<<<<<<< HEAD
   state = {data: []}
 
   componentWillMount() {
     return fetch(this.props.api_url).then(response => this.setState({data: response.data}));
+=======
+
+  constructor(props) {
+    super(props);
+    this.state = {data: []};
+  }
+
+  componentWillMount() {
+    fetch(this.props.api_url)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      this.setState({data: responseJson});
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+>>>>>>> List article
   }
 
   render () {
